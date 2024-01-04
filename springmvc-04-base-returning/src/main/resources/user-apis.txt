@@ -1,0 +1,7 @@
+
+功能1: 用户查询功能
+描述xxxxxxxxxxxxxxxxxxxxxxxx
+url: /user/{id}
+method: get
+request: path | param | json
+response: json

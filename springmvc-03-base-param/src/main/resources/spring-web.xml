@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+
+    <!-- controller -->
+    <context:component-scan base-package="com.atguigu.controller" />
+    <!-- handlerMapping handlerAdapter-->
+
+    <!--
+       小白经理:
+         方案1: <bean class="handlerAdapter | handlerMapping "
+         方案2: 不写 -> springwebmvc - > dispatcherServlet.properties -> 3个秘书 4个经理
+         秘书和经理都是  -> 小白!! 只能处理基本功能 -> jdk默认支持的数据类型!!
+       高级经理:
+         方案3: 手动配置 : 自己给经理加强属性  <property name="messageConverters">
+         方案4: 自动配置 : 批量找一个高级经理团队!
+                    <mvc:annotation-driven />
+                    mvc -> spring-webmvc / meta-inf / spring.handlers / mvc -> MvcNamespaceHandler
+                    -> "annotation-driven", new AnnotationDrivenBeanDefinitionParser()
+                    -> 创建一个handlerAdapter的定义信息 -> 设置jackson的转化器 -> 加入到ioc容器!
+    -->
+    <mvc:annotation-driven />
+<!--    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" >-->
+<!--        &lt;!&ndash; property 手动给经理加一些技能包&ndash;&gt;-->
+<!--        <property name="messageConverters">-->
+<!--            <list>-->
+<!--                &lt;!&ndash; jackson对象&ndash;&gt;-->
+<!--            </list>-->
+<!--        </property>-->
+<!--    </bean>-->
+</beans>

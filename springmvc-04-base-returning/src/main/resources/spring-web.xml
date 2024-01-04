@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+
+    <!--
+       controller  handlerMapping handlerAdapter
+    -->
+
+    <context:component-scan base-package="com.atguigu.controller" />
+
+    <mvc:annotation-driven />
+
+
+    <!-- 我们要找视图页面，我们是混合开发！ 我们需要一个财务！-->
+
+    <!-- 配置动态页面语言jsp的视图解析器,快速查找jsp
+        /WEB-INF/jsp/ +  login  + .jsp
+                         /login
+                         /login.js
+
+                         login
+                         user/index
+    -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+
+    <!-- 第二个秘书，专门找静态资源！-->
+    <mvc:default-servlet-handler />
+
+</beans>
+
